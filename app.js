@@ -15,16 +15,29 @@ const putCoins = () => {
     coinTwo.innerHTML = allCoins
 }
 
-const priceClosed = (cotacoes) => {
-    
+/*const priceClosed = (cotacoes) => {
 
-    console.log(Array.from(cotacoes).map((price, index) => {
-        console.log(price[index]['bid'])
-    }))
+    let bids = cotacoes.map(item => console.log(item.bid))
 
-}
+
+
+    cotacoes.reduce((acc,item)=> acc + item.bid
+        
+    ,0)
+
+    /*cotacoes.reduce((acc,price)=> {
+         let prices  = Number(price.bid)
+         let accs = Number(acc)
+         accs += prices
+        
+         console.log(accs)
+    },0)
+    return bids
+      
+} 
     putCoins()
     
+
 
 
 
@@ -37,12 +50,30 @@ fetch(url)
     .then((resp)=> {
        return resp.json()
     }).then(cotacoes =>  {
-       priceClosed(cotacoes)
+     console.log(priceClosed(cotacoes))
+     // const {bid} = cotacoes[0]
+     // console.log(bid)
+     
     })
     .catch((err)=> {
         console.log(err)  
     })
     
-    },1000) 
+    },2000) */
 
-    
+    fetch('https://economia.awesomeapi.com.br/json/daily/USD-BRL/30')
+    .then((resp)=> {
+       return resp.json()
+    }).then(cotacoes =>  {
+     // const {bid} = cotacoes
+
+     let bids = cotacoes.map(item => Number(item.varBid))
+     //.reduce((acc,item)=> acc+item)
+
+
+      console.log(bids)
+     
+    })
+    .catch((err)=> {
+        console.log(err)  
+    })
