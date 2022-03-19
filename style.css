@@ -48,3 +48,21 @@ button:hover {
     font-weight: bolder;
     margin-left: 50px;
 }
+
+.datas {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(187, 141, 42);
+    margin: 10px;
+    width: 400px;
+    max-height: 400px;
+    border: 2px black solid;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.699) 2px 2px;
+    
+}
+
+span {
+    padding-top: 10px;
+text-align: center;
+}
