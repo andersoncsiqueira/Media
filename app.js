@@ -47,17 +47,17 @@ const priceClosed = (cotacoes) => {
 
     setInterval(()=>{
         let coinOneSelected = coinOne.value
-        let coinTwoSelected = coinTwo.value
-        let url = `https://economia.awesomeapi.com.br/json/daily/${coinOneSelected}-${coinTwoSelected}/30`
+        //let coinTwoSelected = coinTwo.value
+        let url = `https://api.exchangerate.host/timeseries?start_date=2020-01-01&end_date=2020-02-04&base=${coinOneSelected}`
         
 fetch(url)
     .then((resp)=> {
        return resp.json()
     }).then(cotacoes =>  {
-     priceClosed(cotacoes)
+     //priceClosed(cotacoes)
      // const {bid} = cotacoes[0]
      // console.log(bid)
-     
+     console.log(cotacoes)
     })
     .catch((err)=> {
         console.log(err)  
@@ -65,34 +65,15 @@ fetch(url)
     
     },2000) 
 
-    /*let highs = async () => {
+    /*var requestURL = 'https://api.exchangerate.host/timeseriesstart_date=2020-01-01&end_date=2020-02-04?base=GBP';
+var request = new XMLHttpRequest();
+request.open('GET', requestURL);
+request.responseType = 'json';
+request.send();
 
-        const response = await fetch('https://economia.awesomeapi.com.br/json/daily/USD-EUR/30')
-        return await response.json()
-        /*.then((resp)=> {
-           return resp.json()
-        })
-        //.then(cotacoes =>  {
-         // const {bid} = cotacoes
+request.onload = function() {
+  var response = request.response;
+  console.log(response);
+}
+*/
     
-         //let bids = cotacoes.map(item => Number(item.high))
-         //return bids
-         //.reduce((acc,item)=> acc+item)
-    
-         
-        //})
-      /*  .catch((err)=> {
-            console.log(err)  
-        })
-        
-    }
-    
-    const users = async () => {
-        const birds = await highs()
-       console.log(birds)
-        return birds
-    }
-
-    
-users()*/
-   
