@@ -32,51 +32,61 @@ const setStringdays = (numbersDay) => {
 
 const insertHtml = (array,coin) => {
     let string = ''
+    let arrayData = []
     switch (coin) {
         case 'USD' :
             for(i = 0; i < array.length; i += 1) {
-                string += `<li>${array[i].USD}</li>` }
+                string += `<li>${array[i].USD}</li>`
+                arrayData.push(array[i].USD) }
                 infoOne.innerHTML = string 
                 break;
         case 'EUR' :
             for(i = 0; i < array.length; i += 1) {
                 string += `<li>${array[i].EUR}</li>` }
                 infoOne.innerHTML = string 
+                arrayData.push(array[i].EUR)
                 break;
         case 'CAD' :
             for(i = 0; i < array.length; i += 1) {
                 string += `<li>${array[i].CAD}</li>` }
                 infoOne.innerHTML = string 
+                arrayData.push(array[i].CAD)
                 break;   
         case 'GBP' :
             for(i = 0; i < array.length; i += 1) {
                 string += `<li>${array[i].GBP}</li>` }
-                infoOne.innerHTML = string 
+                infoOne.innerHTML = string
+                arrayData.push(array[i].GBP)
                 break;
         case 'CHF' :
             for(i = 0; i < array.length; i += 1) {
                 string += `<li>${array[i].CHF}</li>` }
                 infoOne.innerHTML = string 
+                arrayData.push(array[i].CHF)
                 break;
         case 'JPY' :
             for(i = 0; i < array.length; i += 1) {
                 string += `<li>${array[i].JPY}</li>` }
                 infoOne.innerHTML = string 
+                arrayData.push(array[i].JPY)
                 break;
         case 'BRL' :
             for(i = 0; i < array.length; i += 1) {
                 string += `<li>${array[i].BRL}</li>` }
-                infoOne.innerHTML = string 
+                infoOne.innerHTML = string
+                arrayData.push(array[i].BRL)
                 break;
         case 'NZD' :
             for(i = 0; i < array.length; i += 1) {
                 string += `<li>${array[i].NZD}</li>` }
-                infoOne.innerHTML = string 
+                infoOne.innerHTML = string
+                arrayData.push(array[i].NZD) 
                 break;
         case 'AUD' :
             for(i = 0; i < array.length; i += 1) {
                 string += `<li>${array[i].AUD}</li>` }
-                infoOne.innerHTML = string 
+                infoOne.innerHTML = string
+                arrayData.push(array[i].AUD) 
                 break;
 
     } 
