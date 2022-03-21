@@ -85,6 +85,12 @@ const insertHtml = (dataKeys,amauntDays,coin) => {
                 infoOne.innerHTML = arrayData
                 })
                 break;
+            case 'NZD':
+                string.forEach(data => {
+                arrayData += `<li>${amauntDays[`${data}`].NZD}</li>`
+                infoOne.innerHTML = arrayData
+                })
+                break;
         default:
             console.log('Moeda não encontrada')
                 break;
