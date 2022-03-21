@@ -5,8 +5,10 @@ const numbersDay = document.querySelector('[data-js="days"]')
 const button = document.querySelector('[data-js="buttonFirstSearch"]')
 const infoOne = document.querySelector('[data-js="tableInfo"]')
 const coins = ['','USD','EUR','GBP','JPY','CAD','NZD','CHF','AUD','BRL']
-const numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,
-    23,24,25,26,27,28,29,30]
+const starDate = document.querySelector('[data-js="start"]')
+const endDate = document.querySelector('[data-js="end"]')
+//const numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,
+  //  23,24,25,26,27,28,29,30]
 
 
 
@@ -20,20 +22,25 @@ const setSelecters = (array,element) => {
 }
 
 // não está com a contagem de tempo dinâmica e com erro para mais de dez dias
-const setStringdays = (numbersDay) => {
+/*const setStringdays = (numbersDay) => {
     let stringDays = []
     for(i = 0; i < numbersDay ; i += 1) {
-        stringDays.push(`2022-01-${(31-i<10?`0${31-i}`:31-i)}`)
+        stringDays.push(`2022-02-${(28-i<10?`0${28-i}`:28-i)}`)
     }
 
     return stringDays
 
-}
+}*/
 
 const insertHtml = (array,coin) => {
     let string = ''
     let arrayData = []
-    switch (coin) {
+
+
+
+
+
+    /*switch (coin) {
         case 'USD' :
             for(i = 0; i < array.length; i += 1) {
                 string += `<li>${array[i].USD}</li>`
@@ -88,29 +95,28 @@ const insertHtml = (array,coin) => {
                 infoOne.innerHTML = string
                 arrayData.push(array[i].AUD) 
                 break;
-
-    } 
+                    
+    } */
     
    }
 
-   
-   const getDatas = async (url,numberDay,coin) => {
+   const getDatas = async (url,coin) => {
        const response = await fetch(url)
        const datas = await response.json()
        const amauntDays = datas.rates
        
-       const stringDays = setStringdays(numberDay).map(string=> amauntDays[`${string}`])
+      // const stringDays = setStringdays(numberDay).map(string=> amauntDays[`${string}`])
        
-       insertHtml(stringDays,coin)
-       
-       console.log(setStringdays(numberDay))
-       
+      // insertHtml(stringDays,coin)
+       console.log(amauntDays['2022-03-01'].BRL,amauntDays)
     }
     
     button.addEventListener('click', ()=> {
-        console.log(coinOne.value,coinTwo.value,numbersDay.value)
-        let url = `https://api.exchangerate.host/timeseries?start_date=2022-01-01&end_date=2022-03-10&base=${coinOne.value}`;
-        getDatas(url,numbersDay.value,coinTwo.value)
+        
+        let url = `https://api.exchangerate.host/timeseries?start_date=${starDate.value}&end_date=${endDate.value}&base=${coinOne.value}`;
+        getDatas(url,coinTwo.value)
+      //  console.log(infoOne.children.item(0).innerHTML,(Number(starDate.value)-Number(endDate.value)))
+        
     })
 
 
@@ -118,7 +124,7 @@ const insertHtml = (array,coin) => {
     
 setSelecters(coins,coinOne)
 setSelecters(coins,coinTwo)
-setSelecters(numbers,numbersDay)
+
  
 
     
