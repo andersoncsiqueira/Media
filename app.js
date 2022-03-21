@@ -46,31 +46,43 @@ const insertHtml = (dataKeys,amauntDays,coin) => {
         case 'EUR':
             string.forEach(data => {
                 arrayData += `<li>${amauntDays[`${data}`].EUR}</li>`
+                infoOne.innerHTML = arrayData
             })
             break;
         case 'CAD':
                 string.forEach(data => {
                     arrayData += `<li>${amauntDays[`${data}`].CAD}</li>`
+                    infoOne.innerHTML = arrayData
                 })
                 break;
         case 'CHF':
                 string.forEach(data => {
                 arrayData += `<li>${amauntDays[`${data}`].CHF}</li>`
+                infoOne.innerHTML = arrayData
                 })
                 break;
+        case 'GBP':
+                    string.forEach(data => {
+                    arrayData += `<li>${amauntDays[`${data}`].GBP}</li>`
+                    infoOne.innerHTML = arrayData
+                    })
+                    break;
         case 'AUD':
                 string.forEach(data => {
                 arrayData += `<li>${amauntDays[`${data}`].AUD}</li>`
+                infoOne.innerHTML = arrayData
                 })
                 break;
         case 'JPY':
                 string.forEach(data => {
                 arrayData += `<li>${amauntDays[`${data}`].JPY}</li>`
+                infoOne.innerHTML = arrayData
                 })
                 break;
         case 'BRL':
                 string.forEach(data => {
                 arrayData += `<li>${amauntDays[`${data}`].BRL}</li>`
+                infoOne.innerHTML = arrayData
                 })
                 break;
         default:
