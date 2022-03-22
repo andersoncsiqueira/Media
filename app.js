@@ -8,6 +8,7 @@ const infodata = document.querySelector('[data-js="tableInfodatas"]')
 const coins = ['','USD','EUR','GBP','JPY','CAD','NZD','CHF','AUD','BRL']
 const starDate = document.querySelector('[data-js="start"]')
 const endDate = document.querySelector('[data-js="end"]')
+const media = document.querySelector('[data-js="media"]')
 
 
 
@@ -20,6 +21,14 @@ const setSelecters = (array,element) => {
     element.innerHTML = allDatas
     
 }
+
+const makeMedia = (array)=> {
+
+    let allLis = Array.from(array).map(li => Number(li.textContent)).reduce((acc,item)=> acc+item,0)
+
+    media.textContent = (allLis/array.length).toFixed(4)
+}
+
 
 const insertHtml = (dataKeys,amauntDays,coin) => {
     let string = []
@@ -107,14 +116,19 @@ const insertHtml = (dataKeys,amauntDays,coin) => {
        const amauntDays = datas.rates
       
        insertHtml(Object.keys(amauntDays),amauntDays,coin)
-      
+       makeMedia(infoOne.childNodes)
     }
     
     button.addEventListener('click', ()=> {
         let url = `https://api.exchangerate.host/timeseries?start_date=${starDate.value}&end_date=${endDate.value}&base=${coinOne.value}`;
         getDatas(url,coinTwo.value)
+        
        
     })
+
+
+
+
 
 setSelecters(coins,coinOne)
 setSelecters(coins,coinTwo)

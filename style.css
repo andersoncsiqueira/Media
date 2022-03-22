@@ -72,11 +72,25 @@ button:hover {
     
 }
 
-span {
+
+.infor  {
+        padding-top: 10px;
+        text-align: center;
+        margin: auto;
+        font-size: 25px;
+    
+}
+
+
+.media {
+    position: relative;
+    top: -127px;
+    right: -35px;
     padding-top: 10px;
     text-align: center;
     margin: auto;
 }
+
 
 .inputData {
     width: 150px;
