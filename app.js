@@ -137,8 +137,19 @@ setSelecters(coins,coinTwo)
 
     
 
+
+
+
+const expo = document.querySelector('[data-js="expo"]')
         
   
 
- 
-        
+ expo.addEventListener('click',()=>{
+   
+  const CSGV =  [...infoOne.childNodes].map(li => li.textContent).join('\n')
+
+  console.log(CSGV)
+
+  expo.setAttribute('href', `data:text/csvcharset=utf-8,${encodeURIComponent(CSGV)}`)
+  expo.setAttribute('download','table.csv')
+ })
