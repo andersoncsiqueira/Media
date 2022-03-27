@@ -9,6 +9,9 @@ const coins = ['','USD','EUR','GBP','JPY','CAD','NZD','CHF','AUD','BRL']
 const starDate = document.querySelector('[data-js="start"]')
 const endDate = document.querySelector('[data-js="end"]')
 const media = document.querySelector('[data-js="media"]')
+const interval = document.querySelector('[data-js="interval"]')
+let table = document.querySelector('[data-js="table"]')
+let info = document.querySelector('[data-js="infor"]')
 
 
 
@@ -22,7 +25,7 @@ const setSelecters = (array,element) => {
     
 }
 
-const makeMedia = (array)=> {
+/*const makeMedia = (array)=> {
 
     let allLis = Array.from(array).map(li => Number(li.textContent)).reduce((acc,item)=> acc+item,0)
 
@@ -104,13 +107,11 @@ const insertHtml = (dataKeys,amauntDays,coin) => {
             console.log('Moeda não encontrada')
                 break;
         }
-    
 
 
+   } */
 
-   }
-
-   const getDatas = async (url,coin) => {
+  /* const getDatas = async (url,coin) => {
        const response = await fetch(url)
        const datas = await response.json()
        const amauntDays = datas.rates
@@ -124,9 +125,48 @@ const insertHtml = (dataKeys,amauntDays,coin) => {
         getDatas(url,coinTwo.value)
         
        
+    })*/
+
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Host': 'alpha-vantage.p.rapidapi.com',
+            'X-RapidAPI-Key': 'a1ecde7124msh85f66f86f944dbep1451edjsncf510c9ccda1'
+        }
+    }
+
+//https://alpha-vantage.p.rapidapi.com/query?from_symbol=USD&function=FX_DAILY&to_symbol=BRL&outputsize=compact&datatype=json
+
+    const getDatas = async () => {
+        const response = await fetch(`https://alpha-vantage.p.rapidapi.com/query?from_symbol=${coinOne.value}&function=FX_DAILY&to_symbol=${coinTwo.value}&outputsize=compact&datatype=json`, options)
+        const datas = await response.json()
+        const arrays = Object.keys(datas['Time Series FX (Daily)'])
+        let html = ''
+        
+        
+        arrays.map(item => {   
+            html += `<tr>
+            <td>${item}</td>
+            <td>${datas['Time Series FX (Daily)'][`${item}`]['1. open']}</td>
+            <td>${datas['Time Series FX (Daily)'][`${item}`]['3. low']}</td>
+            <td>${datas['Time Series FX (Daily)'][`${item}`]['2. high']}</td>
+            <td>${datas['Time Series FX (Daily)'][`${item}`]['4. close']}</td>
+            </tr>`
+              
+        })
+        
+        table.innerHTML += html
+
+    }
+
+    button.addEventListener('click', ()=> {
+        
+       getDatas()
+       info.classList.toggle('off')
+        
+       
     })
-
-
 
 
 
@@ -134,22 +174,63 @@ setSelecters(coins,coinOne)
 setSelecters(coins,coinTwo)
 
  
-
-    
-
-
-
-
 const expo = document.querySelector('[data-js="expo"]')
         
-  
 
  expo.addEventListener('click',()=>{
-   
-  const CSGV =  [...infoOne.childNodes].map(li => li.textContent).join('\n')
+   const tds = document.querySelectorAll('tr')
+  /*const CSGV =  [...infoOne.childNodes].map(li => li.textContent).join('\n')
 
   console.log(CSGV)
 
   expo.setAttribute('href', `data:text/csvcharset=utf-8,${encodeURIComponent(CSGV)}`)
-  expo.setAttribute('download','table.csv')
+  expo.setAttribute('download','table.csv') */
+
+//const csgv = table.childNodes.forEach(tr => console.log(tr))
+
+
+const CSGV = Array.from(tds)
+    .map(row => Array.from(row.cells)
+     .map(cell => cell.textContent)
+      .join(',')
+     )
+     .join('\n')
+     
+console.log(CSGV)
+     expo.setAttribute('href', `data:text/csvcharset=utf-8,${encodeURIComponent(CSGV)}`)
+     expo.setAttribute('download','table.csv')
+    
+
  })
+
+
+ function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}

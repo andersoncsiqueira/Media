@@ -68,7 +68,7 @@ button:hover {
     border: 2px black solid;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.699) 2px 2px;
-    align-items: center;
+    
     
 }
 
@@ -96,4 +96,16 @@ button:hover {
     width: 150px;
     margin: 5px;
     border-radius: 5px;
+}
+
+.butoes {
+    display: flex;
+}
+
+tr {
+    max-width: 30px;
+}
+
+.off {
+    display: none;
 }

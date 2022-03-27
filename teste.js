@@ -11,7 +11,7 @@ fetch('https://alpha-vantage.p.rapidapi.com/query?from_symbol=USD&function=FX_DA
 	.then(response => console.log(response))
 	.catch(err => console.error(err));*/
 
-
+let table = document.querySelector('[data-js="table"]')
     
 
     const options = {
@@ -28,11 +28,26 @@ fetch('https://alpha-vantage.p.rapidapi.com/query?from_symbol=USD&function=FX_DA
 
         console.log(datas['Time Series FX (Daily)']['2022-03-25']['2. high'])
         const arrays = Object.keys(datas['Time Series FX (Daily)'])
-
-        arrays.map(item => {
-            console.log(datas['Time Series FX (Daily)'][`${item}`])
+        let html = ''
+        
+        
+        arrays.map(item => {   
+            html += `<tr>
+            <td>${item}</td>
+            <td>${datas['Time Series FX (Daily)'][`${item}`]['1. open']}</td>
+            <td>${datas['Time Series FX (Daily)'][`${item}`]['3. low']}</td>
+            <td>${datas['Time Series FX (Daily)'][`${item}`]['2. high']}</td>
+            <td>${datas['Time Series FX (Daily)'][`${item}`]['4. close']}</td>
+            </tr>`
+              
         })
-    
+        
+        table.innerHTML += html
+
     }
 
-    getDatas()
+
+
+
+
+   
