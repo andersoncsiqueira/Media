@@ -12,6 +12,8 @@ const media = document.querySelector('[data-js="media"]')
 const interval = document.querySelector('[data-js="interval"]')
 let table = document.querySelector('[data-js="table"]')
 let info = document.querySelector('[data-js="infor"]')
+let number = [5,10,15,20,25,30,35,40,45,50,100]
+let numberSelect = document.querySelector('[data-js="numbers"]')
 
 
 
@@ -138,13 +140,21 @@ const insertHtml = (dataKeys,amauntDays,coin) => {
 
 //https://alpha-vantage.p.rapidapi.com/query?from_symbol=USD&function=FX_DAILY&to_symbol=BRL&outputsize=compact&datatype=json
 
-    const getDatas = async () => {
+const selctDaraTimes = (array,selectedNumbers,datas)=> {
+    for (i = 0;i < selectedNumbers; i++) {
+        console.log((Number(datas['Time Series FX (Daily)'][`${array[i]}`]['2. high'])-Number(datas['Time Series FX (Daily)'][`${array[i]}`]['3. low']))/selectedNumbers)
+    }
+}
+
+    const getDatas = async (number) => {
         const response = await fetch(`https://alpha-vantage.p.rapidapi.com/query?from_symbol=${coinOne.value}&function=FX_DAILY&to_symbol=${coinTwo.value}&outputsize=compact&datatype=json`, options)
         const datas = await response.json()
         const arrays = Object.keys(datas['Time Series FX (Daily)'])
         let html = ''
-        
-        
+        //console.log(numberSelect.value)
+        let num = number
+        selctDaraTimes(arrays,num,datas)
+
         arrays.map(item => {   
             html += `<tr>
             <td>${item}</td>
@@ -161,8 +171,9 @@ const insertHtml = (dataKeys,amauntDays,coin) => {
     }
 
     button.addEventListener('click', ()=> {
+        let numberOfDays = numberSelect.value
         
-       getDatas()
+       getDatas(numberOfDays)
        info.classList.toggle('off')
         
        
@@ -172,6 +183,7 @@ const insertHtml = (dataKeys,amauntDays,coin) => {
 
 setSelecters(coins,coinOne)
 setSelecters(coins,coinTwo)
+setSelecters(number,numberSelect)
 
  
 const expo = document.querySelector('[data-js="expo"]')
