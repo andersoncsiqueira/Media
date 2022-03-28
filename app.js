@@ -14,6 +14,8 @@ let table = document.querySelector('[data-js="table"]')
 let info = document.querySelector('[data-js="infor"]')
 let number = [5,10,15,20,25,30,35,40,45,50,100]
 let numberSelect = document.querySelector('[data-js="numbers"]')
+let lista = document.querySelector('[data-js="lista"]')
+let listatime = document.querySelector('[data-js="listatime"]')
 
 
 
@@ -141,9 +143,30 @@ const insertHtml = (dataKeys,amauntDays,coin) => {
 //https://alpha-vantage.p.rapidapi.com/query?from_symbol=USD&function=FX_DAILY&to_symbol=BRL&outputsize=compact&datatype=json
 
 const selctDaraTimes = (array,selectedNumbers,datas)=> {
+    let arrayMedia= []
+    let liHtml = ``
+    
     for (i = 0;i < selectedNumbers; i++) {
-        console.log((Number(datas['Time Series FX (Daily)'][`${array[i]}`]['2. high'])-Number(datas['Time Series FX (Daily)'][`${array[i]}`]['3. low']))/selectedNumbers)
+        arrayMedia.push(Number(datas['Time Series FX (Daily)'][`${array[i]}`]['2. high'])-Number(datas['Time Series FX (Daily)'][`${array[i]}`]['3. low']))
+        
     }
+
+arrayMedia.map(item => item.toFixed(5))
+.forEach(element => {
+
+    liHtml += `<li>${element}</li>`
+
+})
+
+
+
+
+lista.innerHTML = liHtml
+media.textContent = (arrayMedia.reduce((acc,item)=>acc+item
+/selectedNumbers)).toFixed(5)
+
+    console.log(arrayMedia,arrayMedia.reduce((acc,item)=>acc+item
+    /selectedNumbers))
 }
 
     const getDatas = async (number) => {

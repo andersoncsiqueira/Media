@@ -109,3 +109,15 @@ tr {
 .off {
     display: none;
 }
+
+.datas-media{
+    display: flex;
+}
+
+ul{
+    margin: 5px;
+}
+
+li {
+    border: 1px solid black;
+}
