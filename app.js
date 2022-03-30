@@ -29,108 +29,6 @@ const setSelecters = (array,element) => {
     
 }
 
-/*const makeMedia = (array)=> {
-
-    let allLis = Array.from(array).map(li => Number(li.textContent)).reduce((acc,item)=> acc+item,0)
-
-    media.textContent = (allLis/array.length).toFixed(4)
-}
-
-
-const insertHtml = (dataKeys,amauntDays,coin) => {
-    let string = []
-    let arrayData = ''
-    let arraDatasinfo = ''
-
-    
-    dataKeys.forEach(element => {
-        string.push(`${element}`)
-        arraDatasinfo += `<li>${element}</li>`
-    })
-    
-    infodata.innerHTML = arraDatasinfo
-    
-    switch (coin) {
-        case 'USD':
-            
-            string.forEach(data => {
-                arrayData += `<li>${amauntDays[`${data}`].USD}</li>`
-                infoOne.innerHTML = arrayData
-            })
-            break;
-        
-        case 'EUR':
-            string.forEach(data => {
-                arrayData += `<li>${amauntDays[`${data}`].EUR}</li>`
-                infoOne.innerHTML = arrayData
-            })
-            break;
-        case 'CAD':
-                string.forEach(data => {
-                    arrayData += `<li>${amauntDays[`${data}`].CAD}</li>`
-                    infoOne.innerHTML = arrayData
-                })
-                break;
-        case 'CHF':
-                string.forEach(data => {
-                arrayData += `<li>${amauntDays[`${data}`].CHF}</li>`
-                infoOne.innerHTML = arrayData
-                })
-                break;
-        case 'GBP':
-                    string.forEach(data => {
-                    arrayData += `<li>${amauntDays[`${data}`].GBP}</li>`
-                    infoOne.innerHTML = arrayData
-                    })
-                    break;
-        case 'AUD':
-                string.forEach(data => {
-                arrayData += `<li>${amauntDays[`${data}`].AUD}</li>`
-                infoOne.innerHTML = arrayData
-                })
-                break;
-        case 'JPY':
-                string.forEach(data => {
-                arrayData += `<li>${amauntDays[`${data}`].JPY}</li>`
-                infoOne.innerHTML = arrayData
-                })
-                break;
-        case 'BRL':
-                string.forEach(data => {
-                arrayData += `<li>${amauntDays[`${data}`].BRL}</li>`
-                infoOne.innerHTML = arrayData
-                })
-                break;
-            case 'NZD':
-                string.forEach(data => {
-                arrayData += `<li>${amauntDays[`${data}`].NZD}</li>`
-                infoOne.innerHTML = arrayData
-                })
-                break;
-        default:
-            console.log('Moeda não encontrada')
-                break;
-        }
-
-
-   } */
-
-  /* const getDatas = async (url,coin) => {
-       const response = await fetch(url)
-       const datas = await response.json()
-       const amauntDays = datas.rates
-      
-       insertHtml(Object.keys(amauntDays),amauntDays,coin)
-       makeMedia(infoOne.childNodes)
-    }
-    
-    button.addEventListener('click', ()=> {
-        let url = `https://api.exchangerate.host/timeseries?start_date=${starDate.value}&end_date=${endDate.value}&base=${coinOne.value}`;
-        getDatas(url,coinTwo.value)
-        
-       
-    })*/
-
 
     const options = {
         method: 'GET',
@@ -140,7 +38,7 @@ const insertHtml = (dataKeys,amauntDays,coin) => {
         }
     }
 
-//https://alpha-vantage.p.rapidapi.com/query?from_symbol=USD&function=FX_DAILY&to_symbol=BRL&outputsize=compact&datatype=json
+
 
 const selctDaraTimes = (array,selectedNumbers,datas)=> {
     let arrayMedia= []
@@ -158,9 +56,6 @@ arrayMedia.map(item => item.toFixed(5))
 
 })
 
-
-
-
 lista.innerHTML = liHtml
 media.textContent = (arrayMedia.reduce((acc,item)=>acc+item
 /selectedNumbers)).toFixed(5)
@@ -174,7 +69,7 @@ media.textContent = (arrayMedia.reduce((acc,item)=>acc+item
         const datas = await response.json()
         const arrays = Object.keys(datas['Time Series FX (Daily)'])
         let html = ''
-        //console.log(numberSelect.value)
+        
         let num = number
         selctDaraTimes(arrays,num,datas)
 
@@ -214,16 +109,7 @@ const expo = document.querySelector('[data-js="expo"]')
 
  expo.addEventListener('click',()=>{
    const tds = document.querySelectorAll('tr')
-  /*const CSGV =  [...infoOne.childNodes].map(li => li.textContent).join('\n')
-
-  console.log(CSGV)
-
-  expo.setAttribute('href', `data:text/csvcharset=utf-8,${encodeURIComponent(CSGV)}`)
-  expo.setAttribute('download','table.csv') */
-
-//const csgv = table.childNodes.forEach(tr => console.log(tr))
-
-
+ 
 const CSGV = Array.from(tds)
     .map(row => Array.from(row.cells)
      .map(cell => cell.textContent)
@@ -245,10 +131,10 @@ console.log(CSGV)
     var tableSelect = document.getElementById(tableID);
     var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
     
-    // Specify file name
+  
     filename = filename?filename+'.xls':'excel_data.xls';
     
-    // Create download link element
+   
     downloadLink = document.createElement("a");
     
     document.body.appendChild(downloadLink);
@@ -259,13 +145,13 @@ console.log(CSGV)
         });
         navigator.msSaveOrOpenBlob( blob, filename);
     }else{
-        // Create a link to the file
+        
         downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
     
-        // Setting the file name
+       
         downloadLink.download = filename;
         
-        //triggering the function
+        
         downloadLink.click();
     }
 }

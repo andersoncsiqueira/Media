@@ -4,24 +4,37 @@
 }
 
 body {
-    background:#2C3740;
+    background:#12733C;
     display: flex;
     justify-content: center;
 }
 
 main {
-    background-color: #F2B6A0;
+    background-color: #F2958D;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 70vw;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.699) 2px 2px;
+    overflow: hidden;
+}
+.blockone {
+    margin: 2px;
+    display: flex;
+}
+
+.mainsintetic {
+    display: flex;
+    width: 40vw;
+    flex-direction: column;
+    align-items: center;
 }
 
 .parameters {
     display: flex;
-    flex-direction: column;
-    background-color: #28594B;
+    flex-direction: column; 
+    background-color: #14A653;
     margin: 10px;
     max-width: 800px;
     max-height: 500px;
@@ -45,8 +58,8 @@ button {
     border: 2px black solid;
     border-radius: 5px;
     width: 50px;
-    background-color: rgb(240, 70, 3);
-    margin-left: 50px;
+    background-color: #D92344;
+    margin: 5px 5px 5px 50px; 
 }
 
 button:hover {
@@ -83,12 +96,16 @@ button:hover {
 
 
 .media {
-    position: relative;
-    top: -127px;
-    right: -35px;
-    padding-top: 10px;
+    size: 40px; 
+    font-weight: bold;
+    margin-top: 5px;
+    margin-right: 35px;
+    background: #F2958D;
+    height: 25px;
+    padding: 5px;
+    border-radius: 3px;
     text-align: center;
-    margin: auto;
+    
 }
 
 
@@ -110,14 +127,93 @@ tr {
     display: none;
 }
 
-.datas-media{
-    display: flex;
-}
-
 ul{
     margin: 5px;
 }
 
 li {
     border: 1px solid black;
+    padding: 5px;
+    background: #F2958D;
+    border-radius: 3px;
+
+}
+.title {
+    margin: 10px;
+    color:#D92344;
+    text-shadow: black .5px 1px;
+}
+
+.datas-media {
+    display: flex;
+    background-image: url('imagens/coin.jpg');
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.flagLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15vw;
+    border-top: solid 2px #297350;
+    border-bottom: solid 2px #297350;
+    overflow: hidden;
+    height: 300px;
+
+}
+
+.left  {
+    display: flex;
+    position: relative;
+    top: -200px;
+    flex-direction: column;
+    align-items: center;
+    animation: fall 6s infinite;
+    animation-direction: alternate;
+}
+
+.flagLeft img {
+
+    width: 40px;
+    height: 40px;
+    padding: 3px;
+    opacity: .1;
+}
+
+.flagRight {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15vw;
+    border-top: solid 2px #297350;
+    border-bottom: solid 2px #297350;
+    overflow: hidden;
+    height: 300px;
+    
+
+}
+
+.right {
+    display: flex;
+    position: relative;
+    top: -200px;
+    flex-direction: column;
+    align-items: center;
+    animation: fall 6s infinite;
+    animation-direction: alternate-reverse;
+}
+
+.flagRight img {
+
+    width: 40px;
+    height: 40px;
+    padding: 3px;
+    opacity: .1;
+}
+
+@keyframes fall {
+    0%{transform: translateY(-100px);}
+    100%{transform: translateY(200px);}
 }
