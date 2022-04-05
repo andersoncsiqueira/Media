@@ -17,9 +17,6 @@ let numberSelect = document.querySelector('[data-js="numbers"]')
 let lista = document.querySelector('[data-js="lista"]')
 let listatime = document.querySelector('[data-js="listatime"]')
 
-
-
-
 const setSelecters = (array,element) => {
     let allDatas = ''
     array.forEach(coin => {
@@ -29,7 +26,6 @@ const setSelecters = (array,element) => {
     
 }
 
-
     const options = {
         method: 'GET',
         headers: {
@@ -37,8 +33,6 @@ const setSelecters = (array,element) => {
             'X-RapidAPI-Key': 'a1ecde7124msh85f66f86f944dbep1451edjsncf510c9ccda1'
         }
     }
-
-
 
 const selctDaraTimes = (array,selectedNumbers,datas)=> {
     let arrayMedia= []
@@ -58,10 +52,10 @@ arrayMedia.map(item => item.toFixed(5))
 
 lista.innerHTML = liHtml
 media.textContent = (arrayMedia.reduce((acc,item)=>acc+item
-/selectedNumbers)).toFixed(5)
+)/selectedNumbers).toFixed(5)
 
-    console.log(arrayMedia,arrayMedia.reduce((acc,item)=>acc+item
-    /selectedNumbers))
+    console.log((arrayMedia,arrayMedia.reduce((acc,item)=>acc+item
+    )/selectedNumbers))
 }
 
     const getDatas = async (number) => {
@@ -93,19 +87,14 @@ media.textContent = (arrayMedia.reduce((acc,item)=>acc+item
         
        getDatas(numberOfDays)
        info.classList.toggle('off')
-        
-       
+         
     })
-
-
 
 setSelecters(coins,coinOne)
 setSelecters(coins,coinTwo)
 setSelecters(number,numberSelect)
-
  
-const expo = document.querySelector('[data-js="expo"]')
-        
+const expo = document.querySelector('[data-js="expo"]')    
 
  expo.addEventListener('click',()=>{
    const tds = document.querySelectorAll('tr')
@@ -121,9 +110,7 @@ console.log(CSGV)
      expo.setAttribute('href', `data:text/csvcharset=utf-8,${encodeURIComponent(CSGV)}`)
      expo.setAttribute('download','table.csv')
     
-
  })
-
 
  function exportTableToExcel(tableID, filename = ''){
     var downloadLink;

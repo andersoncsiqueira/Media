@@ -85,16 +85,6 @@ button:hover {
     
 }
 
-
-.infor  {
-        padding-top: 10px;
-        text-align: center;
-        margin: auto;
-        font-size: 25px;
-    
-}
-
-
 .media {
     size: 40px; 
     font-weight: bold;
@@ -136,6 +126,7 @@ li {
     padding: 5px;
     background: #F2958D;
     border-radius: 3px;
+    margin: 2px;
 
 }
 .title {
@@ -160,7 +151,7 @@ li {
     border-bottom: solid 2px #297350;
     overflow: hidden;
     height: 300px;
-
+    box-shadow: rgba(0, 0, 0, 0.699) 0px 4px;
 }
 
 .left  {
@@ -191,7 +182,7 @@ li {
     border-bottom: solid 2px #297350;
     overflow: hidden;
     height: 300px;
-    
+    box-shadow: rgba(0, 0, 0, 0.699) 0px 4px;
 
 }
 
