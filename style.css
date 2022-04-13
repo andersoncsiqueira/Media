@@ -208,3 +208,17 @@ li {
     0%{transform: translateY(-100px);}
     100%{transform: translateY(200px);}
 }
+
+.refresh {
+    background: none;
+    border: none;
+    margin: 2px;
+}
+
+.refresh:hover {
+    background: none;
+    border: none;
+    margin: 2px;
+   
+}
+

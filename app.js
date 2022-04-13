@@ -12,17 +12,19 @@ const media = document.querySelector('[data-js="media"]')
 const interval = document.querySelector('[data-js="interval"]')
 let table = document.querySelector('[data-js="table"]')
 let info = document.querySelector('[data-js="infor"]')
-let number = [5,10,15,20,25,30,35,40,45,50,90,100,120]
+let number = [5,10,15,20,25,30,35,40,45,50,90,100]
 let numberSelect = document.querySelector('[data-js="numbers"]')
 let lista = document.querySelector('[data-js="lista"]')
 let listatime = document.querySelector('[data-js="listatime"]')
 
-const setSelecters = (array,element) => {
-    let allDatas = ''
-    array.forEach(coin => {
-        allDatas += `<option>${coin}</option>`
+const setSelectersIntoInputs = (arrayOfSelecters,inputContainer) => {
+    
+    let templateOfOptions = ''
+    arrayOfSelecters.forEach(selected => {
+        templateOfOptions += `<option>${selected}</option>`
     })
-    element.innerHTML = allDatas
+
+    inputContainer.innerHTML = templateOfOptions
     
 }
 
@@ -34,14 +36,18 @@ const setSelecters = (array,element) => {
         }
     }
 
-const selctDaraTimes = (array,selectedNumbers,datas)=> {
+const mediaSelect = (array,selectedNumbers,datas)=> {
     let arrayMedia= []
     let liHtml = ``
     
+    
     for (i = 0;i < selectedNumbers; i++) {
-        arrayMedia.push(Number(datas['Time Series FX (Daily)'][`${array[i]}`]['2. high'])-Number(datas['Time Series FX (Daily)'][`${array[i]}`]['3. low']))
-        
+        let high = Number(datas['Time Series FX (Daily)'][`${array[i]}`]['2. high'])
+        let low = Number(datas['Time Series FX (Daily)'][`${array[i]}`]['3. low'])
+        arrayMedia.push(high-low)    
     }
+
+    
 
 arrayMedia.map(item => item.toFixed(5))
 .forEach(element => {
@@ -54,18 +60,17 @@ lista.innerHTML = liHtml
 media.textContent = (arrayMedia.reduce((acc,item)=>acc+item
 )/selectedNumbers).toFixed(5)
 
-    console.log((arrayMedia,arrayMedia.reduce((acc,item)=>acc+item
-    )/selectedNumbers))
+
 }
 
-    const getDatas = async (number) => {
+const getDatas = async (number) => {
         const response = await fetch(`https://alpha-vantage.p.rapidapi.com/query?from_symbol=${coinOne.value}&function=FX_DAILY&to_symbol=${coinTwo.value}&outputsize=compact&datatype=json`, options)
         const datas = await response.json()
         const arrays = Object.keys(datas['Time Series FX (Daily)'])
         let html = ''
         
-        let num = number
-        selctDaraTimes(arrays,num,datas)
+        
+        mediaSelect(arrays,number,datas)
 
         arrays.map(item => {   
             html += `<tr>
@@ -82,17 +87,16 @@ media.textContent = (arrayMedia.reduce((acc,item)=>acc+item
 
     }
 
-    button.addEventListener('click', ()=> {
-        let numberOfDays = numberSelect.value
+button.addEventListener('click', ()=> {
+  let numberOfDays = numberSelect.value
         
-       getDatas(numberOfDays)
-       info.classList.toggle('off')
-         
-    })
+  getDatas(numberOfDays)
+  info.classList.toggle('off')     
+})
 
-setSelecters(coins,coinOne)
-setSelecters(coins,coinTwo)
-setSelecters(number,numberSelect)
+setSelectersIntoInputs(coins,coinOne)
+setSelectersIntoInputs(coins,coinTwo)
+setSelectersIntoInputs(number,numberSelect)
  
 const expo = document.querySelector('[data-js="expo"]')    
 
