@@ -64,7 +64,7 @@ media.textContent = (arrayMedia.reduce((acc,item)=>acc+item
 }
 
 const getDatas = async (number) => {
-        const response = await fetch(`https://alpha-vantage.p.rapidapi.com/query?from_symbol=${coinOne.value}&function=FX_DAILY&to_symbol=${coinTwo.value}&outputsize=compact&datatype=json`, options)
+        const response = await fetch(`https://alpha-vantage.p.rapidapi.com/query?from_symbol=${coinOne.value}&function=FX_DAILY&to_symbol=${coinTwo.value}&outputsize=full&datatype=json`, options)
         const datas = await response.json()
         const arrays = Object.keys(datas['Time Series FX (Daily)'])
         let html = ''
