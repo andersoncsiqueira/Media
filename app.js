@@ -76,8 +76,6 @@ const getDatas = async (number) => {
             html += `<tr>
             <td>${item}</td>
             <td>${datas['Time Series FX (Daily)'][`${item}`]['1. open']}</td>
-            <td>${datas['Time Series FX (Daily)'][`${item}`]['3. low']}</td>
-            <td>${datas['Time Series FX (Daily)'][`${item}`]['2. high']}</td>
             <td>${datas['Time Series FX (Daily)'][`${item}`]['4. close']}</td>
             </tr>`
               
@@ -98,23 +96,7 @@ setSelectersIntoInputs(coins,coinOne)
 setSelectersIntoInputs(coins,coinTwo)
 setSelectersIntoInputs(number,numberSelect)
  
-const expo = document.querySelector('[data-js="expo"]')    
 
- expo.addEventListener('click',()=>{
-   const tds = document.querySelectorAll('tr')
- 
-const CSGV = Array.from(tds)
-    .map(row => Array.from(row.cells)
-     .map(cell => cell.textContent)
-      .join(',')
-     )
-     .join('\n')
-     
-console.log(CSGV)
-     expo.setAttribute('href', `data:text/csvcharset=utf-8,${encodeURIComponent(CSGV)}`)
-     expo.setAttribute('download','table.csv')
-    
- })
 
  function exportTableToExcel(tableID, filename = ''){
     var downloadLink;
