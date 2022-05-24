@@ -47,8 +47,6 @@ const mediaSelect = (array,selectedNumbers,datas)=> {
         arrayMedia.push(high-low)    
     }
 
-    
-
 arrayMedia.map(item => item.toFixed(5))
 .forEach(element => {
 
@@ -66,23 +64,34 @@ media.textContent = (arrayMedia.reduce((acc,item)=>acc+item
 const getDatas = async (number) => {
         const response = await fetch(`https://alpha-vantage.p.rapidapi.com/query?from_symbol=${coinOne.value}&function=FX_DAILY&to_symbol=${coinTwo.value}&outputsize=full&datatype=json`, options)
         const datas = await response.json()
-        const arrays = Object.keys(datas['Time Series FX (Daily)'])
+        const arrayOfDatas = Object.keys(datas['Time Series FX (Daily)']).reverse()
+        const open = arrayOfDatas.map(open => datas['Time Series FX (Daily)'][`${open}`]['1. open'])
+                        .map(item => item.replace('.',','))
+        const low = arrayOfDatas.map(low => datas['Time Series FX (Daily)'][`${low}`]['3. low'])
+                        .map(item => item.replace('.',','))
+        const high = arrayOfDatas.map(high => datas['Time Series FX (Daily)'][`${high}`]['2. high'])
+                        .map(item => item.replace('.',','))
+        const close = arrayOfDatas.map(close => datas['Time Series FX (Daily)'][`${close}`]['4. close'])
+                        .map(item => item.replace('.',','))
+
+
         let html = ''
         
-        
-        mediaSelect(arrays,number,datas)
+        mediaSelect(arrayOfDatas,number,datas)
 
-        arrays.map(item => {   
+        arrayOfDatas.map((item,index) => {   
             html += `<tr>
             <td>${item}</td>
-            <td>${datas['Time Series FX (Daily)'][`${item}`]['1. open']}</td>
-            <td>${datas['Time Series FX (Daily)'][`${item}`]['4. close']}</td>
+            <td>${open[index]}</td>
+            <td>${low[index]}</td>
+            <td>${high[index]}</td>
+            <td>${close[index]}</td>
             </tr>`
               
         })
         
         table.innerHTML += html
-
+        console.log(table)
     }
 
 button.addEventListener('click', ()=> {
