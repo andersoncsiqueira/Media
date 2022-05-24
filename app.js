@@ -12,7 +12,7 @@ const media = document.querySelector('[data-js="media"]')
 const interval = document.querySelector('[data-js="interval"]')
 let table = document.querySelector('[data-js="table"]')
 let info = document.querySelector('[data-js="infor"]')
-let number = [5,10,15,20,25,30,35,40,45,50,90,100]
+let number = [5,10,15,20,25,30,35,40,45,50,90,120]
 let numberSelect = document.querySelector('[data-js="numbers"]')
 let lista = document.querySelector('[data-js="lista"]')
 let listatime = document.querySelector('[data-js="listatime"]')
@@ -114,7 +114,7 @@ setSelectersIntoInputs(number,numberSelect)
     var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
     
   
-    filename = filename?filename+'.xls':'excel_data.xls';
+    filename = filename?filename+'.xls':`${coinOne.value+"_"+coinTwo.value}.xls`;
     
    
     downloadLink = document.createElement("a");
