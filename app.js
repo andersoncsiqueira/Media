@@ -41,8 +41,6 @@ const mediaSelect = (array,selectedNumbers,datas)=> {
     let arrayMedia= []
     let liHtml = ``
     let arrayForCalc = array.filter(item => item < dateReference.value)
-    console.log(arrayForCalc)
-
 
 if(dateReference.value){
 
@@ -106,7 +104,6 @@ const getDatas = async (number) => {
         })
         
         table.innerHTML += html
-        console.log(table)
     }
 
 button.addEventListener('click', ()=> {
