@@ -44,7 +44,7 @@ main {
     
 }
 
-.selects {
+.selects, #date {
     width: 100px;
     margin: 5px;
     border-radius: 3px;

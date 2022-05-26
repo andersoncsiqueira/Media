@@ -10,6 +10,7 @@ const starDate = document.querySelector('[data-js="start"]')
 const endDate = document.querySelector('[data-js="end"]')
 const media = document.querySelector('[data-js="media"]')
 const interval = document.querySelector('[data-js="interval"]')
+const dateReference = document.querySelector('[data-js="date"]')
 let table = document.querySelector('[data-js="table"]')
 let info = document.querySelector('[data-js="infor"]')
 let number = [5,10,15,20,25,30,35,40,45,50,90,120]
@@ -39,13 +40,27 @@ const setSelectersIntoInputs = (arrayOfSelecters,inputContainer) => {
 const mediaSelect = (array,selectedNumbers,datas)=> {
     let arrayMedia= []
     let liHtml = ``
-    
-    
-    for (i = 0;i < selectedNumbers; i++) {
-        let high = Number(datas['Time Series FX (Daily)'][`${array[i]}`]['2. high'])
-        let low = Number(datas['Time Series FX (Daily)'][`${array[i]}`]['3. low'])
-        arrayMedia.push(high-low)    
+    let arrayForCalc = array.filter(item => item < dateReference.value)
+    console.log(arrayForCalc)
+
+
+if(dateReference.value){
+
+    for (i = arrayForCalc.length;i > (arrayForCalc.length - selectedNumbers); i--) {
+        let high = Number(datas['Time Series FX (Daily)'][`${arrayForCalc[i-1]}`]['2. high'])
+        let low = Number(datas['Time Series FX (Daily)'][`${arrayForCalc[i-1]}`]['3. low'])
+        arrayMedia.push(high-low) 
     }
+
+} else {
+    for (i = array.length;i > (array.length - selectedNumbers); i--) {
+        let high = Number(datas['Time Series FX (Daily)'][`${array[i-2]}`]['2. high'])
+        let low = Number(datas['Time Series FX (Daily)'][`${array[i-2]}`]['3. low'])
+        arrayMedia.push(high-low) 
+    }
+}
+
+    
 
 arrayMedia.map(item => item.toFixed(5))
 .forEach(element => {
