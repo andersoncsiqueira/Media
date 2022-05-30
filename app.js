@@ -13,7 +13,7 @@ const interval = document.querySelector('[data-js="interval"]')
 const dateReference = document.querySelector('[data-js="date"]')
 let table = document.querySelector('[data-js="table"]')
 let info = document.querySelector('[data-js="infor"]')
-let number = [5,10,15,20,25,30,35,40,45,50,90,120]
+let number = [90,5,10,15,20,25,30,35,40,45,50,90,120]
 let numberSelect = document.querySelector('[data-js="numbers"]')
 let lista = document.querySelector('[data-js="lista"]')
 let listatime = document.querySelector('[data-js="listatime"]')
