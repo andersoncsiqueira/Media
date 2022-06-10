@@ -9,7 +9,7 @@ body{
 }
 .container-anime {
 
-    width: 150px;
+    width: 100px;
     height: 200px;
     border: 10px double black;
     margin: auto;
@@ -23,9 +23,8 @@ body{
     display: flex;
     width: 300px;
     height: 200px;
-    animation: move 20s infinite normal;
-    animation-fill-mode: both;
-    animation-timing-function: ease;
+    animation: move 30s infinite normal ease;
+    animation-direction: alternate;
     top: 80px;
     
 }
@@ -49,6 +48,7 @@ body{
 
 .candle0 {
     top: -25px;
+    height: 50px;
 }
 
 .candle01 {
@@ -61,6 +61,7 @@ body{
 
 .candle03 {
     top: 0px;
+    height: 50px;
 }
 
 .candle04 {
@@ -69,6 +70,7 @@ body{
 
 .candle05 {
     top: -55px;
+    height: 50px;
 }
 
 .candle06 {
@@ -81,10 +83,12 @@ body{
 
 .candle08 {
     top: -5px;
+    height: 50px;
 }
 
 .candle09 {
     top: -35px;
+    height: 30px;
 }
 
 .candle10 {
@@ -97,10 +101,12 @@ body{
 
 .candle12 {
     top: -30px;
+    height: 50px;
 }
 
 .candle13 {
     top: -80px;
+    height: 30px;
 }
 
 .candle14 {
@@ -113,6 +119,7 @@ body{
 
 .candle16 {
     top: 10px;
+    height: 30px;
 }
 
 .candle17 {
