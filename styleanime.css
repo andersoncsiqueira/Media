@@ -1,0 +1,160 @@
+
+@keyframes move {
+    from{left: -300px;}
+    to{left: 10px;}
+}
+
+body{
+    width: 98vw;
+}
+.container-anime {
+
+    width: 150px;
+    height: 200px;
+    border: 10px double black;
+    margin: auto;
+    display: flex;
+    overflow: hidden;
+}
+
+.wraper-candle {
+    position: relative;
+    left: -300px;
+    display: flex;
+    width: 300px;
+    height: 200px;
+    animation: move 20s infinite normal;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+    top: 80px;
+    
+}
+
+.candle {
+    position: relative;
+    width: 10px;
+    height: 60px;
+    margin-right: 5px;
+    
+}
+
+.candle:nth-child(odd) {
+    background: red;
+}
+
+
+.candle:nth-child(even) {
+    background: rgb(8, 250, 28);
+}
+
+.candle0 {
+    top: -25px;
+}
+
+.candle01 {
+    top: -50px;
+}
+
+.candle02 {
+    top: 10px;
+}
+
+.candle03 {
+    top: 0px;
+}
+
+.candle04 {
+    top: 20px;
+}
+
+.candle05 {
+    top: -55px;
+}
+
+.candle06 {
+    top: -45px;
+}
+
+.candle07 {
+    top: -75px;
+}
+
+.candle08 {
+    top: -5px;
+}
+
+.candle09 {
+    top: -35px;
+}
+
+.candle10 {
+    top: -10px;
+}
+
+.candle11 {
+    top: -40px;
+}
+
+.candle12 {
+    top: -30px;
+}
+
+.candle13 {
+    top: -80px;
+}
+
+.candle14 {
+    top: -25px;
+}
+
+.candle15 {
+    top: -50px;
+}
+
+.candle16 {
+    top: 10px;
+}
+
+.candle17 {
+    top: 0px;
+}
+
+.candle18 {
+    top: 20px;
+}
+
+.candle19 {
+    top: -55px;
+}
+
+.candle20 {
+    top: -45px;
+}
+
+.candle21 {
+    top: -75px;
+}
+
+.candle22 {
+    top: -5px;
+}
+
+.candle23 {
+    top: -35px;
+}
+
+.candle24 {
+    top: -10px;
+}
+
+.candle25 {
+    top: -40px;
+}
+
+.candle26 {
+    top: -30px;
+}
+
+.candle27 {
+    top: -80px;
+}
