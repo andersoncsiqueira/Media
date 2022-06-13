@@ -4,14 +4,11 @@
     to{left: 10px;}
 }
 
-body{
-    width: 98vw;
-}
 .container-anime {
-
+    position: absolute;
+    top: 100px;
     width: 100px;
     height: 200px;
-    border: 10px double black;
     margin: auto;
     display: flex;
     overflow: hidden;
@@ -164,4 +161,19 @@ body{
 
 .candle27 {
     top: -80px;
+}
+
+.show-off {
+    display: none;
+}
+
+.wrapper-anime {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(27, 26, 26, 0.548)
+
 }

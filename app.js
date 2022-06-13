@@ -11,12 +11,14 @@ const endDate = document.querySelector('[data-js="end"]')
 const media = document.querySelector('[data-js="media"]')
 const interval = document.querySelector('[data-js="interval"]')
 const dateReference = document.querySelector('[data-js="date"]')
+const anime = document.querySelector('[data-js="wrapper-anime"]')
 let table = document.querySelector('[data-js="table"]')
 let info = document.querySelector('[data-js="infor"]')
 let number = [90,5,10,15,20,25,30,35,40,45,50,90,120]
 let numberSelect = document.querySelector('[data-js="numbers"]')
 let lista = document.querySelector('[data-js="lista"]')
 let listatime = document.querySelector('[data-js="listatime"]')
+
 
 const setSelectersIntoInputs = (arrayOfSelecters,inputContainer) => {
     
@@ -60,7 +62,7 @@ if(dateReference.value){
 
     
 
-arrayMedia.map(item => item.toFixed(5))
+arrayMedia.map( (item) => item.toFixed(5))
 .forEach(element => {
 
     liHtml += `<li>${element}</li>`
@@ -71,13 +73,16 @@ lista.innerHTML = liHtml
 media.textContent = (arrayMedia.reduce((acc,item)=>acc+item
 )/selectedNumbers).toFixed(5)
 
+if(media.textContent !=""){
+   anime.classList.toggle('wrapper-anime')
+}
 
 }
 
 const getDatas = async (number) => {
         const response = await fetch(`https://alpha-vantage.p.rapidapi.com/query?from_symbol=${coinOne.value}&function=FX_DAILY&to_symbol=${coinTwo.value}&outputsize=full&datatype=json`, options)
         const datas = await response.json()
-        const arrayOfDatas = Object.keys(datas['Time Series FX (Daily)']).reverse()
+        const arrayOfDatas =  Object.keys(datas['Time Series FX (Daily)']).reverse()
         const open = arrayOfDatas.map(open => datas['Time Series FX (Daily)'][`${open}`]['1. open'])
                         .map(item => item.replace('.',','))
         const low = arrayOfDatas.map(low => datas['Time Series FX (Daily)'][`${low}`]['3. low'])
@@ -108,9 +113,11 @@ const getDatas = async (number) => {
 
 button.addEventListener('click', ()=> {
   let numberOfDays = numberSelect.value
-        
+    
   getDatas(numberOfDays)
-  info.classList.toggle('off')     
+  info.classList.toggle('off')
+  anime.classList.toggle('wrapper-anime')   
+    
 })
 
 setSelectersIntoInputs(coins,coinOne)
