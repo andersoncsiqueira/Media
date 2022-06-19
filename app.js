@@ -19,7 +19,6 @@ let numberSelect = document.querySelector('[data-js="numbers"]')
 let lista = document.querySelector('[data-js="lista"]')
 let listatime = document.querySelector('[data-js="listatime"]')
 
-
 const setSelectersIntoInputs = (arrayOfSelecters,inputContainer) => {
     
     let templateOfOptions = ''
@@ -28,7 +27,6 @@ const setSelectersIntoInputs = (arrayOfSelecters,inputContainer) => {
     })
 
     inputContainer.innerHTML = templateOfOptions
-    
 }
 
     const options = {
@@ -60,8 +58,6 @@ if(dateReference.value){
     }
 }
 
-    
-
 arrayMedia.map( (item) => item.toFixed(5))
 .forEach(element => {
 
@@ -76,7 +72,6 @@ media.textContent = (arrayMedia.reduce((acc,item)=>acc+item
 if(media.textContent !=""){
    anime.classList.toggle('wrapper-anime')
 }
-
 }
 
 const getDatas = async (number) => {
@@ -91,7 +86,6 @@ const getDatas = async (number) => {
                         .map(item => item.replace('.',','))
         const close = arrayOfDatas.map(close => datas['Time Series FX (Daily)'][`${close}`]['4. close'])
                         .map(item => item.replace('.',','))
-
 
         let html = ''
         
@@ -123,8 +117,6 @@ button.addEventListener('click', ()=> {
 setSelectersIntoInputs(coins,coinOne)
 setSelectersIntoInputs(coins,coinTwo)
 setSelectersIntoInputs(number,numberSelect)
- 
-
 
  function exportTableToExcel(tableID, filename = ''){
     var downloadLink;
@@ -132,10 +124,8 @@ setSelectersIntoInputs(number,numberSelect)
     var tableSelect = document.getElementById(tableID);
     var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
     
-  
     filename = filename?filename+'.xls':`${coinOne.value+"_"+coinTwo.value}.xls`;
     
-   
     downloadLink = document.createElement("a");
     
     document.body.appendChild(downloadLink);
@@ -149,9 +139,7 @@ setSelectersIntoInputs(number,numberSelect)
         
         downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
     
-       
         downloadLink.download = filename;
-        
         
         downloadLink.click();
     }
